@@ -254,8 +254,12 @@ public class AppAuthWebView {
 				isLogout = true;
 				return false;
 			} else if(mAppAuthWebViewData.getSchemes().contains(uri.getScheme())) {
-				isRedirect = true;
-                		return true;
+				Intent intent;
+				intent = new Intent(Intent.ACTION_VIEW);
+				intent.setData(Uri.parse(url));
+				mContext.startActivity(intent);
+
+				return true;
 			} else if (url.toLowerCase().startsWith(mAppAuthWebViewData.getRedirectLoginUri().toLowerCase())) {
 
 				mAppAuthWebViewListener.hideConnectionErrorLayout();
