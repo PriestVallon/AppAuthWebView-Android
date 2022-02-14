@@ -2,9 +2,9 @@ package com.hadiidbouk.appauthwebview;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.net.http.SslError;
@@ -245,7 +245,7 @@ public class AppAuthWebView {
 
 		@Override
 		public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            		Uri uri = Uri.parse(url);
+            Uri uri = Uri.parse(url);
 			
 			if (url.toLowerCase().equals(mAppAuthWebViewData.getRedirectLogoutUri().toLowerCase())) {
 				isLogout = true;
@@ -258,10 +258,13 @@ public class AppAuthWebView {
 				Intent intent;
 				intent = new Intent(Intent.ACTION_VIEW);
 				intent.setData(Uri.parse(url));
-				PackageManager packageManager = mContext.getPackageManager();
-				if (intent.resolveActivity(packageManager) != null) {
+
+				try {
 					mContext.startActivity(intent);
+				} catch (ActivityNotFoundException e) {
+					// No app found to use the intent. (Bank ID isn't installed)
 				}
+
 
 				return true;
 			} else if (url.toLowerCase().startsWith(mAppAuthWebViewData.getRedirectLoginUri().toLowerCase())) {
