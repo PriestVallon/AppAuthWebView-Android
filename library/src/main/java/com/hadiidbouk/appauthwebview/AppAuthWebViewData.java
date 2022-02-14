@@ -1,5 +1,8 @@
 package com.hadiidbouk.appauthwebview;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Hadi on 6/29/2017.
  */
