@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.net.http.SslError;
@@ -257,7 +258,10 @@ public class AppAuthWebView {
 				Intent intent;
 				intent = new Intent(Intent.ACTION_VIEW);
 				intent.setData(Uri.parse(url));
-				mContext.startActivity(intent);
+				PackageManager packageManager = mContext.getPackageManager();
+				if (intent.resolveActivity(packageManager) != null) {
+					mContext.startActivity(intent);
+				}
 
 				return true;
 			} else if (url.toLowerCase().startsWith(mAppAuthWebViewData.getRedirectLoginUri().toLowerCase())) {
