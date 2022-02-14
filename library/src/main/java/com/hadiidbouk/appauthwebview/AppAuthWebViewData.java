@@ -19,6 +19,7 @@ public class AppAuthWebViewData {
 	private String endSessionEndpointUri;
 	private boolean isNonceAdded;
 	private boolean generateCodeVerifier = false;
+	private List<String> schemes = new ArrayList<>();
 
 	public String getClientId() {
 		return clientId;
@@ -122,5 +123,13 @@ public class AppAuthWebViewData {
 
 	public void setGenerateCodeVerifier(boolean generateCodeVerifier) {
 		this.generateCodeVerifier = generateCodeVerifier;
+	}
+
+	public List<String> getSchemes() {
+		return schemes;
+	}
+
+	public void setSchemes(List<String> schemes) {
+		this.schemes = schemes;
 	}
 }
