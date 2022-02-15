@@ -293,7 +293,8 @@ public class AppAuthWebView {
 					tokenRequestBuilder
 						.setAuthorizationCode(resp.authorizationCode)
 						.setRedirectUri(Uri.parse(mAppAuthWebViewData.getRedirectLoginUri()))
-						.setCodeVerifier(mCodeVerifier);
+						.setCodeVerifier(mCodeVerifier)
+						.setNonce(resp.request.nonce);
 
 
 					TokenRequest tokenRequest = tokenRequestBuilder.build();
