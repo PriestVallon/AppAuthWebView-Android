@@ -165,6 +165,11 @@ public class AppAuthWebView {
 		if (mAppAuthWebViewData.isNonceAdded()) {
 			nonce = "&nonce=" + UUID.randomUUID().toString();
 		}
+
+		if (mAppAuthWebViewData.getPrompt() != null && !mAppAuthWebViewData.getPrompt().equals("")) {
+			nonce = "&prompt=" + mAppAuthWebViewData.getPrompt();
+		}
+
 		mWebView.loadUrl(uri.toString() + nonce);
 	}
 

@@ -23,6 +23,7 @@ public class AppAuthWebViewData {
 	private boolean isNonceAdded;
 	private boolean generateCodeVerifier = false;
 	private List<String> schemes = new ArrayList<>();
+	private String prompt;
 
 	public String getClientId() {
 		return clientId;
@@ -134,5 +135,13 @@ public class AppAuthWebViewData {
 
 	public void setSchemes(List<String> schemes) {
 		this.schemes = schemes;
+	}
+
+	public String getPrompt() {
+		return prompt;
+	}
+
+	public void setPrompt(String prompt) {
+		this.prompt = prompt;
 	}
 }
