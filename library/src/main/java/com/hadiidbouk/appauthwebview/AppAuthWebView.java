@@ -331,6 +331,9 @@ public class AppAuthWebView {
 					mAppAuthWebViewListener.showConnectionErrorLayout();
 				}
 			}
+			else if(url.contains("resume")){
+				return true;
+			}
 			isLogout = false;
 			return false;
 		}
