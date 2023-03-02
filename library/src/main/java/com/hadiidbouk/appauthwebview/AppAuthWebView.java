@@ -9,8 +9,11 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.net.http.SslError;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.preference.PreferenceManager;
 import androidx.annotation.Nullable;
+
+import android.util.Log;
 import android.view.View;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
@@ -352,6 +355,11 @@ public class AppAuthWebView {
 
 		@Override
 		public void onReceivedHttpError(WebView view, WebResourceRequest request, WebResourceResponse errorResponse) {
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+				if (!request.isForMainFrame()) {
+					return;
+				}
+			}
 
 			isErrorReceived = true;
 
