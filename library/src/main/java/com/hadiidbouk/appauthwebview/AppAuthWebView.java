@@ -331,7 +331,7 @@ public class AppAuthWebView {
 					mAppAuthWebViewListener.showConnectionErrorLayout();
 				}
 			}
-			else if(url.contains("resume")){
+			else if(url.contains("favicon")){
 				return true;
 			}
 			isLogout = false;
